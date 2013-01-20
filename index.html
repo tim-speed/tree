@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title></title>
+        <meta charset="UTF-8">
+
+        <link rel="stylesheet" href="css/bootstrap.min.css" />
+        <link rel="stylesheet" href="css/bootstrap-responsive.min.css" />
+        <link rel="stylesheet" href="css/jquery-tree.css" />
+    </head>
+    <body>
+        <div class="container">
+            
+            <div class="well pull-left" style="min-width: 100px;">
+                <ul id="tree" class="nav nav-tree">
+                    <li>
+                        <div>
+                            <span class="tree-expand-icon" role="presentation"><i></i></span>
+                            <span class="tree-item-label">Item 1</span>
+                        </div>
+                    </li>
+                    <li>
+                        <div>
+                            <span class="tree-expand-icon" role="presentation"><i></i></span>
+                            <span class="tree-item-label">Item 2</span>
+                        </div></li>
+                    <li>
+                        <div>
+                            <span class="tree-expand-icon" role="presentation"><i></i></span>
+                            <span class="tree-item-label">Item 3</span>
+                        </div>
+                        <!--  Child Level 2 -->
+                            <ul>
+                                <li>
+                                    <div>
+                                        <span class="tree-expand-icon" role="presentation"><i></i></span>
+                                        <span class="tree-item-label">Item 3.1</span>
+                                    </div>
+                                </li>
+                                <li>
+                                    <div>
+                                        <span class="tree-expand-icon" role="presentation"><i></i></span>
+                                        <span class="tree-item-label">Item 3.2</span>
+                                    </div>
+                                </li>
+                                <li>
+                                    <div>
+                                        <span class="tree-expand-icon" role="presentation"><i></i></span>
+                                        <span class="tree-item-label">Item 3.3</span>
+                                    </div>
+                                        <!--  Child Level 3 -->
+                                        <ul>
+                                            <li>
+                                                <div>
+                                                    <span class="tree-expand-icon" role="presentation"><i></i></span>
+                                                    <span class="tree-item-label">Item 3.3.1</span>
+                                                </div>
+                                            </li>
+                                            <li>
+                                                <div>
+                                                    <span class="tree-expand-icon" role="presentation"><i></i></span>
+                                                    <span class="tree-item-label">Item 3.3.2</span>
+                                                </div>
+                                            </li>
+                                            <li>
+                                                <div>
+                                                    <span class="tree-expand-icon" role="presentation"><i></i></span>
+                                                    <span class="tree-item-label">Item 3.3.3</span>
+                                                </div>
+                                            </li>
+                                        </ul>
+                                </li>
+                            </ul>
+                    </li>
+                    <li>
+                        <div>
+                            <span class="tree-expand-icon" role="presentation"><i></i></span>
+                            <span class="tree-item-label">Item 4</span>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+        </div>
+
+        <script src="js/jquery.js"></script>
+        <script src="js/bootstrap.min.js"></script>
+        <script src="js/jquery-tree.js"></script>
+        <script>
+            jQuery(document).ready(function() {
+                $('#tree').tree();
+            });
+        </script>
+    </body>
+</html>

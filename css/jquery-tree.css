@@ -1,0 +1,81 @@
+
+.nav-tree { 
+    /*padding-left: 30px;*/
+}
+
+.nav-tree li ul { 
+    list-style: none;
+    margin: 0;
+}
+
+.nav-tree li > :first-child:hover,
+.nav-tree li.tree-item-hover > :first-child:hover {
+    background: #EEE;
+}
+
+.nav-tree li.collapsible.tree-item-icon-hover > :first-child {
+    background: transparent;
+}
+
+.nav-tree .tree-item-label {
+    display: inline-block;
+    padding: 4px 16px 4px 0;
+    white-space: nowrap;
+    position: relative;
+}
+
+.nav-tree .tree-expand-icon {
+    display: inline-block;
+    width: 16px!important;
+    height: 100%!important;
+    padding: 4px 0;
+    text-align: center;
+}
+.nav-tree li.collapsible .tree-expand-icon {
+    cursor: pointer;
+}
+
+.nav-tree .tree-expand-icon:hover {
+    background: #EEE;
+}
+
+.nav-tree .tree-expand-icon::selection,
+.nav-tree .tree-expand-icon *::selection {
+    background: transparent;
+}
+
+.nav-tree .tree-expand-icon > i {
+    display: inline-block;
+    vertical-align: middle;
+}
+
+.nav-tree .tree-expand-icon.open > i::before,
+.nav-tree .tree-expand-icon.closed > i::before {
+    content: "";
+    display: block;
+    height: 0; 
+    width: 0;
+}
+
+.nav-tree .tree-expand-icon.open > i::before {
+    border-left: 4px solid transparent;
+    border-right: 4px solid transparent;
+    border-top: 4px solid black;
+}
+
+.nav-tree .tree-expand-icon.closed > i::before {
+    border-top: 4px solid transparent;
+    border-bottom: 4px solid transparent;
+    border-left: 4px solid black;
+}
+
+/* Level 2 
+.nav-tree > li > ul > li > :first-child { padding-left: 16px; }*/
+/* Level 3 
+.nav-tree > li > ul > li > ul > li > :first-child { padding-left: 32px; }*/
+/* Level 4 
+.nav-tree > li > ul > li > ul > li > ul > :first-child { padding-left: 48px; }*/
+/* Level 5 
+.nav-tree > li > ul > li > ul > li > ul > li > ul > :first-child { padding-left: 64px; }*/
+/* Level 6 
+.nav-tree > li > ul > li > ul > li > ul > li > ul > li > ul > :first-child { padding-left: 80px; }*/
