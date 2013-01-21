@@ -1,41 +1,68 @@
+/**
+ * API Methods
+ * ======
+ * add
+ *   addChild
+ *   addSiblingBefore
+ *   addSiblingAfter
+ * move
+ * delete
+ * 
+ * 
+ * Events
+ * ======
+ * onClick
+ * onMouseEnter
+ * onMouseLeave/Out
+ */
+
 (function($){
     
     var Tree = function(element, options) {
         this.element = $(element);
-        this.options = $.extend({}, $.fn.tree.defaults, options);
+        this.options = options = $.extend({}, $.fn.tree.defaults, options);
+        
+        var root = this.element.is('ul') ? this.element : this.element.find('> ul');
+        root.attr('role', 'tree');
 
-        var self = this;
-        
         // Properly space our nested list hierarchy
-        interate($(element).find('> li'), 0);
+        offset(this.element.find('> li'), 0);
         
-        function interate(children, level) {
+        function offset(children, level) {
             children && children.length && children.each(function() {
                 var $li = $(this), 
                     nodes = $li.find('> ul > li');
-                    
-                $li.find('> :first-child').css({'padding-left': (self.options.childItemPadding * level) + 'px'});
+                
+                // Add level offset
+                $li.attr('role', 'treeitem')
+                        .find('> :first-child')
+                        .css(options.levelOffetPropery, (options.levelOffset * level) + options.levelOffsetUnit);
                 
                 if (nodes.length) {
-                    $li.addClass('collapsible').find('> :first-child .tree-expand-icon').addClass('open');
-                    interate(nodes, level + 1);
+                    // This node contains a sub-tree
+                    $li.attr('aria-expanded', 'true').addClass('collapsible tree-item-collapsed');
+                    
+                    $li.children('ul').attr('role', 'group');
+                    
+                    offset(nodes, level + 1);
                 }
             });
         }
         
         // Attach expand/collapse hover events
-        this.element.delegate('.tree-expand-icon', 'mouseenter', function(e) {
-            $(this).closest('li').toggleClass('tree-item-icon-hover');
+        this.element.delegate('.tree-item-toggle', 'mouseenter', function(e) {
+            $(this).closest('li').toggleClass('tree-item-toggle-hover');
         });
     
-        this.element.delegate('.tree-expand-icon', 'mouseleave', function(e) {
-            $(this).closest('li').removeClass('tree-item-icon-hover');
+        this.element.delegate('.tree-item-toggle', 'mouseleave', function(e) {
+            $(this).closest('li').removeClass('tree-item-toggle-hover');
         });
         
         // Attach click handler to the expand/collapse icon
-        this.element.delegate('.tree-expand-icon', 'click', function(e) {
+        this.element.delegate('.tree-item-toggle', 'click', function(e) {
             var $this = $(this), 
-                $ul = $this.closest('li').find('> ul'),
+                $li = $this.closest('li'),
+                $ul = $li.find('> ul'),
                 visible;
             
             if ($ul.is(':animated')) {
@@ -45,8 +72,9 @@
             visible = $ul.is(':visible');
             
             if ($ul.length) {
-                $this.removeClass(visible ? 'open' : 'closed').addClass(visible ? 'closed' : 'open');
-
+                $li.removeClass(visible ? 'tree-item-expanded' : 'tree-item-collapsed')
+                        .addClass(visible ? 'tree-item-collapsed' : 'tree-item-expanded');
+                
                 $ul.toggle(60);
             }
         });
@@ -68,7 +96,9 @@
     };
 
     $.fn.tree.defaults = {
-        childItemPadding: 16
+        levelOffset: 16,
+        levelOffsetUnit: 'px',
+        levelOffetPropery: 'padding-left'
     };
 
     $.fn.tree.Constructor = Tree;
