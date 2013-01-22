@@ -22,7 +22,9 @@
         this.element = $(element);
         this.options = options = $.extend({}, $.fn.tree.defaults, options);
         
-        var root = this.element.is('ul') ? this.element : this.element.find('> ul');
+        var self = this, 
+                root = this.element.is('ul') ? this.element : this.element.find('> ul');
+        
         root.attr('role', 'tree');
 
         // Properly space our nested list hierarchy
@@ -40,7 +42,7 @@
                 
                 if (nodes.length) {
                     // This node contains a sub-tree
-                    $li.attr('aria-expanded', 'true').addClass('collapsible tree-item-collapsed');
+                    $li.attr('aria-expanded', 'true').addClass('collapsible tree-item-expanded');
                     
                     $li.children('ul').attr('role', 'group');
                     
@@ -76,6 +78,20 @@
                         .addClass(visible ? 'tree-item-collapsed' : 'tree-item-expanded');
                 
                 $ul.toggle(60);
+            }
+        
+            // prevent parent handler from triggering
+            return false;
+        });
+    
+        this.element.delegate('[role="treeitem"] > :first-child', 'click', function(e) {
+            var $li = $(this).closest('li'),
+                active;
+            
+            if ($li.not('.active')) {
+                active = self.active && self.active.length ? self.active : root.find('[role="treeitem"].active');
+                active.removeClass('active');
+                self.active = $li.addClass('active');
             }
         });
     };

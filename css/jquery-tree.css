@@ -10,16 +10,15 @@
     margin: 0;
 }
 
+.nav-tree li > :first-child {
+    cursor: pointer;
+    position: relative;
+}
+
 .nav-tree li > :first-child:hover,
 .nav-tree li.tree-item-hover > :first-child:hover {
     background: #EEE;
 }
-
-
-/*.nav-tree li[role="treeitem"] > :first-child::selection,
-.nav-tree li[role="treeitem"] > :first-child *::selection {
-    background: transparent;
-}*/
 
 .nav-tree .tree-item-toggle::selection,
 .nav-tree .tree-item-toggle *::selection {
@@ -52,37 +51,44 @@
     cursor: pointer;
 }
 
-.nav-tree .tree-item-toggle > i {
-    display: inline-block;
-    vertical-align: middle;
-}
-
-.nav-tree .tree-item-toggle > i::before {
+.nav-tree .tree-item-toggle::before {
     content: "";
-    display: block;
-    height: 0; 
+    display: inline-block;
+    height: auto;
+    vertical-align: middle;
     width: 0;
 }
 
-.nav-tree li.tree-item-expanded > :first-child .tree-item-toggle > i::before {
+.nav-tree li.tree-item-expanded > :first-child .tree-item-toggle::before {
     border-left: 4px solid transparent;
     border-right: 4px solid transparent;
-    border-top: 4px solid black;
+    border-top: 4px solid #000;
 }
 
-.nav-tree li.tree-item-collapsed > :first-child .tree-item-toggle > i::before {
+.nav-tree li.tree-item-collapsed > :first-child .tree-item-toggle::before {
     border-top: 4px solid transparent;
     border-bottom: 4px solid transparent;
-    border-left: 4px solid black;
+    border-left: 4px solid #000;
 }
 
-/* Level 2 
-.nav-tree > li[role="treeitem"] > ul[role="group"] > li[role="treeitem"] > :first-child { padding-left: 16px; }*/
-/* Level 3 
-.nav-tree > li > ul > li > ul > li > :first-child { padding-left: 32px; }*/
-/* Level 4 
-.nav-tree > li > ul > li > ul > li > ul > :first-child { padding-left: 48px; }*/
-/* Level 5 
-.nav-tree > li > ul > li > ul > li > ul > li > ul > :first-child { padding-left: 64px; }*/
-/* Level 6 
-.nav-tree > li > ul > li > ul > li > ul > li > ul > li > ul > :first-child { padding-left: 80px; }*/
+
+/* Google Style */
+#demo1.nav-tree {
+    padding-left: 30px;
+}
+#demo1.nav-tree li > :first-child .selection-highlighter {
+    border-left: 4px solid transparent;
+    bottom: 0;
+    display: block;
+    position: absolute;
+    top: 0;
+}
+
+#demo1.nav-tree li.active > :first-child .selection-highlighter {
+    border-left-color: #DD4B39;
+    left: -30px;
+}
+
+#demo1.nav-tree li.active > :first-child {
+    color: #DD4B39;
+}
