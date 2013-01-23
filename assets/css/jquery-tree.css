@@ -1,0 +1,94 @@
+
+.nav-tree { 
+    margin-bottom: 20px;
+    margin-left: 0;
+    list-style: none;
+}
+
+.nav-tree li ul { 
+    list-style: none;
+    margin: 0;
+}
+
+.nav-tree li > :first-child {
+    cursor: pointer;
+    position: relative;
+}
+
+.nav-tree li > :first-child:hover,
+.nav-tree li.tree-item-hover > :first-child:hover {
+    background: #EEE;
+}
+
+.nav-tree .tree-item-toggle::selection,
+.nav-tree .tree-item-toggle *::selection {
+    background: transparent;
+}
+
+
+.nav-tree li.collapsible.tree-item-toggle-hover > :first-child {
+    background: transparent;
+}
+
+.nav-tree .tree-item-label {
+    display: inline-block;
+    margin-right: 16px;
+    padding: 4px 0;
+    white-space: nowrap;
+    position: relative;
+}
+
+.nav-tree .tree-item-toggle {
+    display: inline-block;
+    width: 16px!important;
+    height: 100%!important;
+    padding: 4px 0;
+    text-align: center;
+}
+
+.nav-tree li.collapsible .tree-item-toggle:hover {
+    background: #EEE;
+    cursor: pointer;
+}
+
+.nav-tree .tree-item-toggle::before {
+    content: "";
+    display: inline-block;
+    height: auto;
+    vertical-align: middle;
+    width: 0;
+}
+
+.nav-tree li.tree-item-expanded > :first-child .tree-item-toggle::before {
+    border-left: 4px solid transparent;
+    border-right: 4px solid transparent;
+    border-top: 4px solid #000;
+}
+
+.nav-tree li.tree-item-collapsed > :first-child .tree-item-toggle::before {
+    border-top: 4px solid transparent;
+    border-bottom: 4px solid transparent;
+    border-left: 4px solid #000;
+}
+
+
+/* Google Style */
+#demo1.nav-tree {
+    padding-left: 30px;
+}
+#demo1.nav-tree li > :first-child .selection-highlighter {
+    border-left: 4px solid transparent;
+    bottom: 0;
+    display: block;
+    position: absolute;
+    top: 0;
+}
+
+#demo1.nav-tree li.active > :first-child .selection-highlighter {
+    border-left-color: #DD4B39;
+    left: -30px;
+}
+
+#demo1.nav-tree li.active > :first-child {
+    color: #DD4B39;
+}
