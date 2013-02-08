@@ -1,12 +1,12 @@
 # [Tree v1.0.0 alpha](http://markmurphy.github.com/tree) 
 
 Tree is an open source HTML5 javascript tree control plugin for jQuery that integrates by itself or with the twitter bootstrap framework and will hopfully be a major game changer as far as this type of component goes. 
-This project was started because we needed a better solution for our file tree on compilr.com and frankly, so does the rest of the open source community. 
+This project was started because we needed a better solution for our file tree on [compilr.com](https://compilr.com) and frankly, so does the rest of the open source community. 
 
-The problem with current solutions is that some of the more fully featured ones are poorly written, documented and just way too bloated. The goal here is to produce a solution that's much more light weight but still fully featured. 
-Something with a clear and easy to follow API and something that follows todays semantic markup standards including being WAI-ARIA compliant.
+The problem with current solutions is that some of the more fully featured ones are poorly written, documented and just far too cumbersome. The goal here is to produce a solution that's much more light weight but still fully featured. 
+Something with a clear and easy to follow API and something that follows todays semantic markup standards including being [WAI-ARIA](http://www.w3.org/WAI/intro/aria.php) compliant.
 
-Ultimately we're hoping to give the jquery-ui team a head start on their own tree widget which is still in the [planning stages](http://wiki.jqueryui.com/w/page/12138128/Tree)
+Ultimately we're hoping to give the jquery-ui team a head start on their own tree widget which is still in the [planning stages](http://wiki.jqueryui.com/w/page/12138128/Tree).
 
 
 
