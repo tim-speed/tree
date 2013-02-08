@@ -6,7 +6,7 @@ This project was started because we needed a better solution for our file tree o
 The problem with current solutions is that some of the more fully featured ones are poorly written, documented and just far too cumbersome. The goal here is to produce a solution that's much more light weight but still fully featured. 
 Something with a clear and easy to follow API and something that follows todays semantic markup standards including being [WAI-ARIA](http://www.w3.org/WAI/intro/aria.php) compliant.
 
-Ultimately we're hoping to give the jquery-ui team a head start on their own tree widget which is still in the [planning stages](http://wiki.jqueryui.com/w/page/12138128/Tree).
+Ultimately we're hoping to give the jquery-ui team a head start on their own tree widget which is still in the [jQuery-UI Tree planning stages](http://wiki.jqueryui.com/w/page/12138128/Tree).
 
 
 
