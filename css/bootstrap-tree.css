@@ -12,7 +12,12 @@
 
 .nav-tree li > :first-child {
     cursor: pointer;
+    display: block;
     position: relative;
+    -webkit-transition: all 0.4s linear;
+       -moz-transition: all 0.4s linear;
+            transition: all 0.4s linear;
+    
 }
 
 .nav-tree li > :first-child:hover,
@@ -20,14 +25,16 @@
     background: #EEE;
 }
 
-.nav-tree .tree-item-toggle::selection,
-.nav-tree .tree-item-toggle *::selection {
+.nav-tree *:not(.tree-item-label)::selection {
     background: transparent;
 }
 
-
 .nav-tree li.collapsible.tree-item-toggle-hover > :first-child {
     background: transparent;
+}
+
+.nav-tree li > :first-child > input {
+  margin: 0;
 }
 
 .nav-tree .tree-item-label {
@@ -46,7 +53,7 @@
     text-align: center;
 }
 
-.nav-tree li.collapsible .tree-item-toggle:hover {
+.nav-tree li.collapsible > :first-child .tree-item-toggle:hover {
     background: #EEE;
     cursor: pointer;
 }
@@ -84,11 +91,27 @@
     top: 0;
 }
 
-#demo1.nav-tree li.active > :first-child .selection-highlighter {
+#demo1.nav-tree li.selected > :first-child .selection-highlighter {
     border-left-color: #DD4B39;
     left: -30px;
 }
 
-#demo1.nav-tree li.active > :first-child {
+#demo1.nav-tree li.selected > :first-child {
     color: #DD4B39;
+    font-weight: bold;
 }
+
+/*
+#demo1 .icon-file,
+#demo1 .icon-folder-open {
+  width: 16px;
+  height: 16px;
+  line-height: 16px;
+  background-image: url('../img/collectionsprite_1.png');
+  background-position: -24px 0;
+}
+
+#demo1 .icon-file {
+  background-position: -4px 0;
+}
+*/

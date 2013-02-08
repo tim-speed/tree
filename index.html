@@ -1,192 +1,355 @@
 <!DOCTYPE html>
 <html>
-    <head>
-        <title></title>
-        <meta charset="UTF-8">
+  <head>
+    <title>HTML5 Tree (Bootstrap)</title>
+    <meta charset="utf-8">
 
-        <link rel="stylesheet" href="css/bootstrap.min.css" />
-        <link rel="stylesheet" href="css/bootstrap-responsive.min.css" />
-        <link rel="stylesheet" href="css/jquery-tree.css" />
-    </head>
-    <body>
+    <link rel="stylesheet" href="css/bootstrap.css" />
+    <link rel="stylesheet" href="css/bootstrap-responsive.css" />
+    <link rel="stylesheet" href="css/bootstrap-tree.css" />
+  </head>
+  <body>
+    <nav class="navbar navbar-inverse navbar-static-top">
+      <div class="navbar-inner">
         <div class="container">
-            <div class="row">
-                <h3>Google Drive Style</h3>
-                
-                <div style="max-width: 300px;">
-                    <ul id="demo1" class="nav nav-tree" role="tree">
-                        <li role="treeitem">
-                            <div>
-                                <b class="tree-item-toggle" role="presentation"></b>
-                                <i class="tree-item-icon icon-file"></i>
-                                <span class="tree-item-label">Item 1</span>
-                                <b class="selection-highlighter"></b>
-                            </div>
-                        </li>
-                        <li role="treeitem">
-                            <div>
-                                <b class="tree-item-toggle" role="presentation"></b>
-                                <i class="tree-item-icon icon-file"></i>
-                                <span class="tree-item-label">Item 2</span>
-                                <b class="selection-highlighter"></b>
-                            </div>
-                        </li>
-                        <li role="treeitem" aria-expanded="true" class="active">
-                            <div>
-                                <b class="tree-item-toggle" role="presentation"></b>
-                                <i class="tree-item-icon icon icon-folder-open"></i>
-                                <span class="tree-item-label">Item 3</span>
-                                <b class="selection-highlighter"></b>
-                            </div>
-                            <!--  Child Level 2 -->
-                                <ul role="group">
-                                    <li role="treeitem">
-                                        <div>
-                                            <b class="tree-item-toggle" role="presentation"></b>
-                                            <i class="tree-item-icon icon-file"></i>
-                                            <span class="tree-item-label">Item 3.1</span>
-                                            <b class="selection-highlighter"></b>
-                                        </div>
-                                    </li>
-                                    <li role="treeitem">
-                                        <div>
-                                            <b class="tree-item-toggle" role="presentation"></b>
-                                            <i class="tree-item-icon icon-file"></i>
-                                            <span class="tree-item-label">Item 3.2</span>
-                                            <b class="selection-highlighter"></b>
-                                        </div>
-                                    </li>
-                                    <li role="treeitem" aria-expanded="true" >
-                                        <div>
-                                            <b class="tree-item-toggle" role="presentation"></b>
-                                            <i class="tree-item-icon icon-folder-open"></i>
-                                            <span class="tree-item-label">Item 3.3</span>
-                                            <b class="selection-highlighter"></b>
-                                        </div>
-                                            <!--  Child Level 3 -->
-                                            <ul role="group">
-                                                <li role="treeitem">
-                                                    <div>
-                                                        <b class="tree-item-toggle" role="presentation"></b>
-                                                        <i class="tree-item-icon icon-file"></i>
-                                                        <span class="tree-item-label">Item 3.3.1</span>
-                                                        <b class="selection-highlighter"></b>
-                                                    </div>
-                                                </li>
-                                                <li role="treeitem">
-                                                    <div>
-                                                        <b class="tree-item-toggle" role="presentation"></b>
-                                                        <i class="tree-item-icon icon-file"></i>
-                                                        <span class="tree-item-label">Item 3.3.2</span>
-                                                        <b class="selection-highlighter"></b>
-                                                    </div>
-                                                </li>
-                                                <li role="treeitem">
-                                                    <div>
-                                                        <b class="tree-item-toggle" role="presentation"></b>
-                                                        <i class="tree-item-icon icon-file"></i>
-                                                        <span class="tree-item-label">Item 3.3.3</span>
-                                                        <b class="selection-highlighter"></b>
-                                                    </div>
-                                                </li>
-                                            </ul>
-                                    </li>
-                                </ul>
-                        </li>
-                        <li role="treeitem">
-                            <div>
-                                <b class="tree-item-toggle" role="presentation"></b>
-                                <i class="tree-item-icon icon-file"></i>
-                                <span class="tree-item-label">Item 4</span>
-                                <b class="selection-highlighter"></b>
-                            </div>
-                        </li>
-                    </ul>
-                </div>
-            </div><!-- /row -->
-            
-            <div class="row">
+          <a class="brand" href="./index.html">Tree</a>
+          <ul class="nav">
+            <!--<li><a href="./docs/docs.html">Documentation</a></li>-->
+          </ul>
+        </div>
+      </div>
+    </nav>
+    
+    <div class="container">
+      <div class="row">
 
-                <h3>Basic</h3>
-                
-                <div class="well">
-                    <ul id="demo2" class="nav nav-tree">
-                        <li>
-                            <div>
-                                <i class="tree-item-toggle" role="presentation"></i>
-                                <span class="tree-item-label">Item 1</span>
-                            </div>
-                        </li>
-                        <li>
-                            <div>
-                                <i class="tree-item-toggle" role="presentation"></i>
-                                <span class="tree-item-label">Item 2</span>
-                            </div>
-                        </li>
-                        <li>
-                            <div>
-                                <i class="tree-item-toggle" role="presentation"></i>
-                                <span class="tree-item-label">Item 3</span>
-                            </div>
-                            <!--  Child Level 2 -->
-                                <ul>
-                                    <li>
-                                        <div>
-                                            <i class="tree-item-toggle" role="presentation"></i>
-                                            <span class="tree-item-label">Item 3.1</span>
-                                        </div>
-                                    </li>
-                                    <li>
-                                        <div>
-                                            <i class="tree-item-toggle" role="presentation"></i>
-                                            <span class="tree-item-label">Item 3.2</span>
-                                        </div>
-                                    </li>
-                                    <li>
-                                        <div>
-                                            <i class="tree-item-toggle" role="presentation"></i>
-                                            <span class="tree-item-label">Item 3.3</span>
-                                        </div>
-                                            <!--  Child Level 3 -->
-                                            <ul>
-                                                <li>
-                                                    <div>
-                                                        <i class="tree-item-toggle" role="presentation"></i>
-                                                        <span class="tree-item-label">Item 3.3.1</span>
-                                                    </div>
-                                                </li>
-                                                <li>
-                                                    <div>
-                                                        <i class="tree-item-toggle" role="presentation"></i>
-                                                        <span class="tree-item-label">Item 3.3.2</span>
-                                                    </div>
-                                                </li>
-                                                <li>
-                                                    <div>
-                                                        <i class="tree-item-toggle" role="presentation"></i>
-                                                        <span class="tree-item-label">Item 3.3.3</span>
-                                                    </div>
-                                                </li>
-                                            </ul>
-                                    </li>
-                                </ul>
-                        </li>
-                        <li>
-                            <div>
-                                <i class="tree-item-toggle" role="presentation"></i>
-                                <span class="tree-item-label">Item 4</span>
-                            </div>
-                        </li>
+        
+        
+        <!-- Google Demo 
+        ============================================================== -->
+        <div class="span4">
+          <h3>Google Style</h3>
+
+          <div style="max-width: 300px;">
+            <ul id="demo1" class="nav nav-tree" role="tree">
+              
+              <li role="treeitem" id="item-1">
+                <label>
+                  <b class="tree-item-toggle" role="presentation"></b>
+                  <i class="tree-item-icon icon-file"></i>
+                  <span class="tree-item-label">Item 1</span>
+                  <b class="selection-highlighter"></b>
+                </label>
+              </li>
+              
+              <li role="treeitem">
+                <label>
+                  <b class="tree-item-toggle" role="presentation"></b>
+                  <i class="tree-item-icon icon-file"></i>
+                  <span class="tree-item-label">Item 4</span>
+                  <b class="selection-highlighter"></b>
+                </label>
+              </li>
+              
+              <li role="treeitem" id="item-2">
+                <label>
+                  <b class="tree-item-toggle" role="presentation"></b>
+                  <i class="tree-item-icon icon-file"></i>
+                  <span class="tree-item-label">Item 2</span>
+                  <b class="selection-highlighter"></b>
+                </label>
+              </li>
+              
+              <li role="treeitem" aria-expanded="true" class="selected">
+                <label>
+                  <b class="tree-item-toggle" role="presentation"></b>
+                  <i class="tree-item-icon icon-folder-open"></i>
+                  <span class="tree-item-label">Item 3</span>
+                  <b class="selection-highlighter"></b>
+                </label>
+                <!-- Level 2 -->
+                <ul role="group">
+                  <li role="treeitem">
+                    <label>
+                      <b class="tree-item-toggle" role="presentation"></b>
+                      <i class="tree-item-icon icon-file"></i>
+                      <span class="tree-item-label">Item 3.1</span>
+                      <b class="selection-highlighter"></b>
+                    </label>
+                  </li>
+                  
+                  <li role="treeitem">
+                    <label>
+                      <b class="tree-item-toggle" role="presentation"></b>
+                      <i class="tree-item-icon icon-file"></i>
+                      <span class="tree-item-label">Item 3.2</span>
+                      <b class="selection-highlighter"></b>
+                    </label>
+                  </li>
+                  
+                  <li role="treeitem" aria-expanded="true" >
+                    <label>
+                      <b class="tree-item-toggle" role="presentation"></b>
+                      <i class="tree-item-icon icon-folder-open"></i>
+                      <span class="tree-item-label">Item 3.3</span>
+                      <b class="selection-highlighter"></b>
+                    </label>
+                    
+                    <!-- Level 3 -->
+                    <ul role="group">
+                      
+                      <li role="treeitem" id="item-3-3-1">
+                        <label>
+                          <b class="tree-item-toggle" role="presentation"></b>
+                          <i class="tree-item-icon icon-file"></i>
+                          <span class="tree-item-label">Item 3.3.1</span>
+                          <b class="selection-highlighter"></b>
+                        </label>
+                      </li>
+                      
+                      <li role="treeitem">
+                        <label>
+                          <b class="tree-item-toggle" role="presentation"></b>
+                          <i class="tree-item-icon icon-file"></i>
+                          <span class="tree-item-label">Item 3.3.2</span>
+                          <b class="selection-highlighter"></b>
+                        </label>
+                      </li>
+                      
+                      <li role="treeitem">
+                        <label>
+                          <b class="tree-item-toggle" role="presentation"></b>
+                          <i class="tree-item-icon icon-file"></i>
+                          <span class="tree-item-label">Item 3.3.3</span>
+                          <b class="selection-highlighter"></b>
+                        </label>
+                      </li>
                     </ul>
-                </div>
-            </div><!-- /row -->
+                  </li>
+                </ul>
+              </li>
+                  
+              <li role="treeitem" aria-expanded="true" >
+                <label>
+                  <b class="tree-item-toggle" role="presentation"></b>
+                  <i class="tree-item-icon icon-folder-open"></i>
+                  <span class="tree-item-label">Item 5</span>
+                  <b class="selection-highlighter"></b>
+                </label>
+
+                <!-- Level 2 -->
+                <ul role="group"></ul>
+              </li>
+              
+            </ul>
+          </div>
         </div>
 
-        <script src="js/jquery.js"></script>
-        <script src="js/jquery-tree.js"></script>
         
-        <script src="js/bootstrap.min.js"></script>
         
-        <script src="js/application.js"></script>
-    </body>
+        <!-- Checkbox Demo 
+        ============================================================== -->
+        <div class="span4">
+          <h3>Checkboxes</h3>
+
+          <div style="max-width: 300px;">
+            <ul id="demo2" class="nav nav-tree" role="tree">
+              <li role="treeitem" id="item-1">
+                <label>
+                  <b class="tree-item-toggle" role="presentation"></b>
+                  <input type="checkbox" id="checkbox-1" />
+                  <i class="tree-item-icon icon-file"></i>
+                  <span class="tree-item-label">Item 1</span>
+                  <b class="selection-highlighter"></b>
+                </label>
+              </li>
+              <li role="treeitem" id="item-2">
+                <label>
+                  <b class="tree-item-toggle" role="presentation"></b>
+                  <input type="checkbox" id="checkbox-2" />
+                  <i class="tree-item-icon icon-file"></i>
+                  <span class="tree-item-label">Item 2</span>
+                  <b class="selection-highlighter"></b>
+                </label>
+              </li>
+              <li role="treeitem" aria-expanded="true" class="active">
+                <label>
+                  <b class="tree-item-toggle" role="presentation"></b>
+                  <input type="checkbox" id="checkbox-3" />
+                  <i class="tree-item-icon icon icon-folder-open"></i>
+                  <span class="tree-item-label">Item 3</span>
+                  <b class="selection-highlighter"></b>
+                </label>
+                <!--  Child Level 2 -->
+                <ul role="group">
+                  <li role="treeitem">
+                    <label>
+                      <b class="tree-item-toggle" role="presentation"></b>
+                      <input type="checkbox" id="checkbox-3.1" />
+                      <i class="tree-item-icon icon-file"></i>
+                      <span class="tree-item-label">Item 3.1</span>
+                      <b class="selection-highlighter"></b>
+                    </label>
+                  </li>
+                  <li role="treeitem">
+                    <label>
+                      <b class="tree-item-toggle" role="presentation"></b>
+                      <input type="checkbox" id="checkbox-3.2" />
+                      <i class="tree-item-icon icon-file"></i>
+                      <span class="tree-item-label">Item 3.2</span>
+                      <b class="selection-highlighter"></b>
+                    </label>
+                  </li>
+                  <li role="treeitem" aria-expanded="true" >
+                    <label>
+                      <b class="tree-item-toggle" role="presentation"></b>
+                      <input type="checkbox" id="checkbox-3.3" />
+                      <i class="tree-item-icon icon-folder-open"></i>
+                      <span class="tree-item-label">Item 3.3</span>
+                      <b class="selection-highlighter"></b>
+                    </label>
+                    <!--  Child Level 3 -->
+                    <ul role="group">
+                      <li role="treeitem" id="item-3-3-1">
+                        <label>
+                          <b class="tree-item-toggle" role="presentation"></b>
+                          <input type="checkbox" id="checkbox-3.3.1" />
+                          <i class="tree-item-icon icon-file"></i>
+                          <span class="tree-item-label">Item 3.3.1</span>
+                          <b class="selection-highlighter"></b>
+                        </label>
+                      </li>
+                      <li role="treeitem">
+                        <label>
+                          <b class="tree-item-toggle" role="presentation"></b>
+                          <input type="checkbox" id="checkbox-3.3.2" />
+                          <i class="tree-item-icon icon-file"></i>
+                          <span class="tree-item-label">Item 3.3.2</span>
+                          <b class="selection-highlighter"></b>
+                        </label>
+                      </li>
+                      <li role="treeitem">
+                        <label>
+                          <b class="tree-item-toggle" role="presentation"></b>
+                          <input type="checkbox" id="checkbox-3.3.3" />
+                          <i class="tree-item-icon icon-file"></i>
+                          <span class="tree-item-label">Item 3.3.3</span>
+                          <b class="selection-highlighter"></b>
+                        </label>
+                      </li>
+                    </ul>
+                  </li>
+                </ul>
+              </li>
+              <li role="treeitem">
+                <label>
+                  <b class="tree-item-toggle" role="presentation"></b>
+                  <input type="checkbox" id="checkbox-4" />
+                  <i class="tree-item-icon icon-file"></i>
+                  <span class="tree-item-label">Item 4</span>
+                  <b class="selection-highlighter"></b>
+                </label>
+              </li>
+            </ul>
+          </div>
+        </div>
+        
+        
+        
+        <!-- JSON Demo 
+        ============================================================== -->
+        <div class="span4">
+          <h3>JSON</h3>
+
+          <div>
+            <ul id="demo3" class="nav nav-tree" role="tree"></ul>
+          </div>
+        </div>
+
+      </div><!-- /row -->
+
+      <div class="row">
+
+        <h3>Basic</h3>
+
+        <div class="well">
+          <ul id="demo4" class="nav nav-tree">
+            <li>
+              <label>
+                <i class="tree-item-toggle" role="presentation"></i>
+                <span class="tree-item-label">Item 1</span>
+              </label>
+            </li>
+            <li>
+              <label>
+                <i class="tree-item-toggle" role="presentation"></i>
+                <span class="tree-item-label">Item 2</span>
+              </label>
+            </li>
+            <li>
+              <label>
+                <i class="tree-item-toggle" role="presentation"></i>
+                <span class="tree-item-label">Item 3</span>
+              </label>
+              <!--  Child Level 2 -->
+              <ul>
+                <li>
+                  <label>
+                    <i class="tree-item-toggle" role="presentation"></i>
+                    <span class="tree-item-label">Item 3.1</span>
+                  </label>
+                </li>
+                <li>
+                  <label>
+                    <i class="tree-item-toggle" role="presentation"></i>
+                    <span class="tree-item-label">Item 3.2</span>
+                  </label>
+                </li>
+                <li>
+                  <label>
+                    <i class="tree-item-toggle" role="presentation"></i>
+                    <span class="tree-item-label">Item 3.3</span>
+                  </label>
+                  <!--  Child Level 3 -->
+                  <ul>
+                    <li>
+                      <label>
+                        <i class="tree-item-toggle" role="presentation"></i>
+                        <span class="tree-item-label">Item 3.3.1</span>
+                      </label>
+                    </li>
+                    <li>
+                      <label>
+                        <i class="tree-item-toggle" role="presentation"></i>
+                        <span class="tree-item-label">Item 3.3.2</span>
+                      </label>
+                    </li>
+                    <li>
+                      <label>
+                        <i class="tree-item-toggle" role="presentation"></i>
+                        <span class="tree-item-label">Item 3.3.3</span>
+                      </label>
+                    </li>
+                  </ul>
+                </li>
+              </ul>
+            </li>
+            <li>
+              <label>
+                <i class="tree-item-toggle" role="presentation"></i>
+                <span class="tree-item-label">Item 4</span>
+              </label>
+            </li>
+          </ul>
+        </div>
+      </div><!-- /row -->
+    </div>
+
+    <script src="js/jquery.js"></script>
+    <script src="js/bootstrap.min.js"></script>
+    <script src="js/bootstrap-tree.js"></script>
+    <script src="js/bootstrap-tree-checkbox.js"></script>
+
+    <script src="js/application.js"></script>
+  </body>
 </html>
