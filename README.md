@@ -44,9 +44,9 @@ Feel free to fork the project and submit your pull requests anytime!
 
 **Mark Murphy**
 
-+ http://twitter.com/murphy_mark
-+ http://github.com/markmurphy
-
++ https://compilr.com/markmurphy
++ https://github.com/markmurphy
++ https://twitter.com/murphy_mark
 
 
 ## Copyright and license
