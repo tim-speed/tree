@@ -29,21 +29,6 @@
  * |-before
  * |-after
  * delete (remove)
- * 
- * 
- *@TODO: Events
- *
- *onSelect
- *onBeforeSelect
- *onDeselect
- *onBeforeDeselect
- *onActivate
- *onBeforeActivate
- *onLazyLoad
- *
- * 
- * @param {function} $
- * @returns {undefined}
  */
 (function ($) {
     "use strict";
@@ -115,57 +100,81 @@
                 }
             });
         }
-      
-        self.sort(element, false, true);
 
-        // Attach expand/collapse mouseenter/mouseleave hover events
-        this.element.delegate('.tree-item-toggle', 'mouseenter', function(e) {
-            $(this).closest('li').toggleClass('tree-item-toggle-hover');
+        // Attach expand/collapse mouseenter/hoverin event
+        this.element.delegate('.tree-item-toggle', 'mouseenter', function (e) {
+            var $target = $(this).closest('li')
+                    .toggleClass('tree-item-toggle-hover', true);
         });
 
-        this.element.delegate('.tree-item-toggle', 'mouseleave', function(e) {
-            $(this).closest('li').removeClass('tree-item-toggle-hover');
+        // Attach expand/collapse mouseleave/hoverout event
+        this.element.delegate('.tree-item-toggle', 'mouseleave', function (e) {
+            var $target = $(this).closest('li')
+                    .toggleClass('tree-item-toggle-hover', false);
         });
 
-
-        // Attaches click handler to the expand/collapse icon
-        this.element.delegate('.tree-item-toggle', 'click', function(e) {
-            var $this = $(this)
-              , $li = $this.closest('li')
-              , $ul = $li.find('> ul')
-              , visible;
-
-            if ($ul.is(':animated')) {
-                $ul.stop(true, true);
-            }
-
-            visible = $ul.is(':visible');
- 
-            if ($ul.length) {
-                $li.removeClass(visible ? 'tree-item-expanded' : 'tree-item-collapsed')
-                    .addClass(visible ? 'tree-item-collapsed' : 'tree-item-expanded');
-                
-                $ul.toggle(60);
-            }
- 
-            // prevent parent handler from triggering
+        // Attaches click handler to the expand/collapse element
+        this.element.delegate('.tree-item-toggle', 'click', function () {
+            self.toggle($(this).closest('li'));
             return false;
         });
-      
       
         // Attaches click handler for selecting/activating a tree node
         this.element.delegate('[role="treeitem"] > :first-child', 'click', function(e) {
             self.select($(this).closest('li'))
         });
+        
+        // Manages renaming functionality by listening for click and focusout events
+        // and setting the contenteditable attribute accordingly.
+        this.element.delegate('.tree-item-label', 'click focusout', function(e) {
+          var $this = $(this)
+          , $li = $this.closest('li')
+          , focused = $li.is('.selected')
+          
+          if (focused && e.type === 'click') {
+            
+            e = $.Event('rename', {
+              target: $li[0]
+            });
+            
+            $li.trigger(e);
+            
+            if (e.isDefaultPrevented()) return;
+            
+            $this.data('oldValue', $this.text()).attr('contenteditable', true).focus();
+            
+            return false;
+          }
+          else if (e.type === 'focusout' && $this.is('[contenteditable]')) {
+            
+            $this.removeAttr('contenteditable');
+            
+            e = $.Event('renamed', {
+              oldValue: $this.data('oldValue')
+            , newValue: $this.text()
+            });
+            
+            $li.trigger(e);
+          }
+        });
       
-        for(var plugin in plugins) {
-           plugins[plugin]._init.apply(this, arguments);
-        }
+      // initializes all plugins
+      for(var plugin in plugins) {
+         plugins[plugin]._init.apply(this, arguments);
+      }
 
     };
   
     Tree.prototype = {
       constructor: Tree
+      
+    , collapse: function ( element ) {
+        return this.toggle(element, false);
+    }
+    
+    , expand: function ( element ) {
+      return this.toggle(element, true);;
+    }
       
     , select: function ( element ) {
         var $this = this.element
@@ -173,70 +182,75 @@
           , previous
           , e
 
-        if ($target.hasClass('selected')) 
-          return
+        if ($target.hasClass('selected')) return this;
 
         previous = $this.data('selected') && $this.data('selected').length 
                   ? $this.data('selected') 
-                  : $this.find('.selected:last')[0]
+                  : $this.find('.selected:last')[0];
 
-        e = $.Event('beforeselect', {
+        e = $.Event('select', {
           relatedTarget: previous
-        })
+        });
 
-        $target.trigger(e)
+        $target.trigger(e);
 
-        if (e.isDefaultPrevented())
-          return
+        if (e.isDefaultPrevented()) return this;
 
         $(previous).removeClass('selected');
         $this.data('selected', $target.addClass('selected')[0]) 
         
-        $this.trigger({
-          type: 'select'
+        $target.trigger({
+          type: 'selected'
         , relatedTarget: previous
         })
+        
+        return this;
       }
-    
-    , sort: function (element, decending, recursive) {
-            var self = this
-              , element = $(element)
-              , items = element.find('> li').get();
-                
-            if (!items.length) { 
-              items = element.find('> ul > li').get();
-              element = items.length ? element.find('> ul') : element;
-            }
-          
-            if (items.length) {
-              items.sort(function(a, b) {
-                var $a = $(a)
-                  , $b = $(b);
-                
-                if ($a.find('> ul').length && !$b.find('> ul').length) {
-                  // order '$a' brefore '$b', '$a' is a branch and '$b' is a leaf
-                  return -1;
-                }
-                else if($b.find('> ul').length && !$a.find('> ul').length) {
-                  // order '$b' brefore '$a', '$b' is a branch and '$a' is a leaf
-                  return 1;
-                } 
-                
-                // '$a' and '$b' are the same, sort by label
-                return $a.text().toUpperCase().localeCompare($b.text().toUpperCase());
-              });
+      
+      
+      , toggle: function ( element ) {
+            var $this = this.element
+              , $target = $(element)
+              , $li
+              , $ul
+              , collapse
+              , e;
+              
+            $li = $target.is('li') ? $target : $target.closest('li');
+            $ul = $li.find('> ul');
             
-              // if sort desc, reverse the list
-              decending && items.reverse();
+            collapse = (arguments[1] !== undefined || arguments[1] !== null) 
+              ? arguments[1] 
+              : $ul.is(':visible');
 
-              $.each(items, function(idx, item) {
-                element.append(item);
-              });
+            if ($ul.length) {
+              
+                e = $.Event(collapse ? 'collapse' : 'expand', {
+                  target: $li[0]
+                , relatedTarget: $ul[0]
+                });
+
+                $li.trigger(e);
+
+                if (e.isDefaultPrevented()) return;
+                
+                $ul.is(':animated') && $ul.stop(true, true);
+              
+                $li
+                  .toggleClass('tree-item-collapsed', collapse)
+                  .toggleClass('tree-item-expanded', !collapse);
+                
+                $ul.toggle(60, function () {
+                  e = $.Event(collapse ? 'collapsed' : 'expanded', {
+                    target: $li[0]
+                  , relatedTarget: $ul[0]
+                  });
+
+                  $li.trigger(e);
+                });
             }
-
-            recursive && element.find('> li > ul').each(function () { 
-                self.sort(this, decending, recursive);
-            });
+            
+            return this;
         }
     };
 

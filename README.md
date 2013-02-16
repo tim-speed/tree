@@ -1,4 +1,4 @@
-# [Tree v1.0.0 alpha](http://markmurphy.github.com/tree)[![Build Status](https://secure.travis-ci.org/markmurphy/tree.png)](http://travis-ci.org/markmurphy/tree)
+# [Tree v1.0.0-alpha](http://markmurphy.github.com/tree)[![Build Status](https://secure.travis-ci.org/markmurphy/tree.png)](http://travis-ci.org/markmurphy/tree)
 
 Tree is an open source HTML5 javascript tree control plugin for jQuery that integrates by itself or with the twitter bootstrap framework and will hopfully be a major game changer as far as this type of component goes. 
 This project was started because we needed a better solution for our file tree on [compilr.com](https://compilr.com) and frankly, so does the rest of the open source community. 
