@@ -1,6 +1,6 @@
 # [Tree v0.0.0](http://markmurphy.github.com/tree) [![Build Status](https://secure.travis-ci.org/markmurphy/tree.png)](http://travis-ci.org/markmurphy/tree)
 
-Tree is a kick ass, small footprint, semantic and WAI-ARIA friendly tree control plugin for jQuery. 
+Tree is a kick ass, lightweight and WAI-ARIA friendly tree control plugin for jQuery. 
 
 It integrates nicely with the twitter bootstrap framework or by itself and will hopfully be a major game changer as far as this type of component goes. 
 
